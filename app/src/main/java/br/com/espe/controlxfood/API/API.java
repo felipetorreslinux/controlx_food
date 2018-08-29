@@ -25,15 +25,14 @@ public class API {
         return sharedPreferences != null ? sharedPreferences.getString("maq_local", null) : null;
     }
 
-    public void Wifi (Menu menu){
-        MenuItem itemWifi = menu.findItem(R.id.wifi_login);
+    public boolean Wifi (){
         ConnectivityManager conectivtyManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (conectivtyManager.getActiveNetworkInfo() != null
                 && conectivtyManager.getActiveNetworkInfo().isAvailable()
                 && conectivtyManager.getActiveNetworkInfo().isConnected()) {
-            itemWifi.setIcon(activity.getResources().getDrawable(R.drawable.ic_wifi_on_orange));
+            return true;
         } else {
-            itemWifi.setIcon(activity.getResources().getDrawable(R.drawable.ic_wifi_off_orange));
+            return false;
         }
     }
 }
