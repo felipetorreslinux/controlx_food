@@ -24,6 +24,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
+        api = new API(this);
         createToolbar(toolbar);
     }
 
@@ -35,7 +36,6 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        api = new API(this);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_login, menu);
         api.Wifi(menu);
