@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ControlX Food</string>
+    <string name="info_versao">Versão 2.0.0</string>
+    <string name="label_button_login">Entrar</string>
+    <string name="title_login">Login</string>
 </resources>
