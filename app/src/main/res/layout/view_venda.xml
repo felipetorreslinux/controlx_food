@@ -6,7 +6,8 @@
     android:background="@color/md_black"
     android:weightSum="2">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,6 +21,13 @@
 
         </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_venda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"/>
+
         <TextView
             android:id="@+id/calc_venda_register"
             android:layout_width="match_parent"
@@ -30,7 +38,7 @@
             android:padding="10dp"
             android:text="0x0"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
@@ -52,7 +60,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_1"
+                android:src="@drawable/number_7"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"/>
 
@@ -60,14 +68,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_2"
+                android:src="@drawable/number_8"
                 android:clickable="true"/>
 
             <ImageView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_3"
+                android:src="@drawable/number_9"
                 android:clickable="true"/>
 
             <ImageView
@@ -129,21 +137,21 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_7"
+                android:src="@drawable/number_1"
                 android:clickable="true"/>
 
             <ImageView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_8"
+                android:src="@drawable/number_2"
                 android:clickable="true"/>
 
             <ImageView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/number_9"
+                android:src="@drawable/number_3"
                 android:clickable="true"/>
 
             <ImageView
