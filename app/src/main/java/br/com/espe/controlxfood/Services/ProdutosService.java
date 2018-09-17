@@ -25,10 +25,11 @@ public class ProdutosService {
 
 
     public void consulta(List<Produtos> produtos, int code){
+        List<String> venda = new ArrayList<>();
         for(int i = 0; i < produtos.size(); i++){
             Produtos prod = produtos.get(i);
             if(prod.getId() == code){
-                System.out.println(prod.getNome());
+                venda.add(prod.getNome());
                 return;
             }
         }
