@@ -4,13 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/wifi_login"
-        app:showAsAction="always"
-        tools:ignore="MenuTitle" />
-
-    <item
-        android:id="@+id/ajuda_login"
-        android:icon="@drawable/ic_help_outline_orange"
+        android:id="@+id/configuracoes_login"
+        android:icon="@drawable/ic_settings_orange"
         app:showAsAction="always"
         tools:ignore="MenuTitle" />
 

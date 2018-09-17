@@ -5,11 +5,8 @@
         <item name="android:background">@drawable/bg_splash</item>
     </style>
 
-    <style name="Login" parent="Theme.AppCompat.Light.NoActionBar" tools:ignore="NewApi">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorWhite</item>
+    <style name="Login" parent="AppTheme" tools:ignore="NewApi">
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="actionOverflowButtonStyle">@style/ButtonMenuWhite</item>
@@ -19,7 +16,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimary</item>
     </style>
 
     <style name="ButtonMenuWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
