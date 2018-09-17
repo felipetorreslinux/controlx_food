@@ -1,8 +1,12 @@
 package br.com.espe.controlxfood.Views;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,13 +15,26 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.espe.controlxfood.Models.Grupos;
+import br.com.espe.controlxfood.Models.Produtos;
+import br.com.espe.controlxfood.Models.VendaMesa;
 import br.com.espe.controlxfood.R;
+import br.com.espe.controlxfood.Services.GruposService;
+import br.com.espe.controlxfood.Services.ProdutosService;
 
 public class View_Venda extends AppCompatActivity implements View.OnClickListener {
 
+    TextView item_garcon;
+    TextView item_mesa;
+
+    TextView letreiro_info;
     EditText venda_register;
 
+    List<Grupos> grupos = new ArrayList<Grupos>();
+    List<Produtos> produtos = new ArrayList<Produtos>();
     List<String> lista_venda_register = new ArrayList<>();
+
+    List<VendaMesa> vendas = new ArrayList<VendaMesa>();
 
     ImageView number00;
     ImageView number01;
@@ -33,11 +50,22 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
     ImageView image_remove;
     ImageView image_igual;
 
+    Vibrator vibrator;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_venda);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
+        new GruposService().adicionaGrupos(grupos);
+        new ProdutosService().adicionaProdutos(produtos);
+
+
+        item_garcon = findViewById(R.id.item_garcon);
+        item_mesa = findViewById(R.id.item_mesa);
+
+        letreiro_info = findViewById(R.id.letreiro_info);
         venda_register = findViewById(R.id.venda_register);
 
         number00 = findViewById(R.id.number_0);
@@ -67,6 +95,22 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
         image_igual = findViewById(R.id.image_igual);
         image_igual.setOnClickListener(this);
 
+        validGarconMesa();
+
+        new ProdutosService().consulta(produtos, 5);
+
+    }
+
+    private void validGarconMesa(){
+        String garcon = item_garcon.getText().toString().trim();
+        String mesa = item_mesa.getText().toString().trim();
+        if(garcon.isEmpty()){
+            letreiro_info.setText(R.string.info_labal_garcon);
+        }else if(mesa.isEmpty()){
+            letreiro_info.setText(R.string.info_labal_mesa);
+        }else{
+            letreiro_info.setText(R.string.info_labal_produto);
+        }
     }
 
     @Override
@@ -126,6 +170,7 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.image_igual:
+                igualFunc();
                 break;
         }
     }
@@ -141,4 +186,37 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
             updateList();
         }
     }
+
+    private void igualFunc(){
+        final String register = venda_register.getText().toString().trim();
+        String garcon = item_garcon.getText().toString().trim();
+        String mesa = item_mesa.getText().toString().trim();
+
+        if(garcon.isEmpty()){
+            if(register.isEmpty()){
+                letreiro_info.setText(R.string.info_not_labal_garcon);
+                vibrator.vibrate(500);
+            }else{
+                item_garcon.setText("G - " + register);
+                letreiro_info.setText(R.string.info_labal_mesa);
+                venda_register.setText(null);
+                lista_venda_register.clear();
+            }
+        }else if(mesa.isEmpty()){
+            if(register.isEmpty()){
+                letreiro_info.setText(R.string.info_not_labal_mesa);
+                vibrator.vibrate(500);
+            }else {
+                item_mesa.setText("M - " + register);
+                letreiro_info.setText(R.string.info_labal_produto);
+                venda_register.setText(null);
+                lista_venda_register.clear();
+            }
+        }else{
+            int code = Integer.parseInt(venda_register.getText().toString().trim().replace(" ", ""));
+            boolean sim = produtos.contains(code);
+        }
+    }
+
+
 }

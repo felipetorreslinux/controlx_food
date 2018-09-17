@@ -13,10 +13,38 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"
             android:weightSum="1">
+
+            <TextView
+                android:id="@+id/item_garcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/md_white"
+                android:layout_marginRight="16dp"/>
+
+            <TextView
+                android:id="@+id/item_mesa"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/md_white"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_online"/>
 
         </LinearLayout>
 
@@ -27,6 +55,7 @@
             android:layout_marginHorizontal="5dp"/>
 
         <android.support.v7.widget.RecyclerView
+            android:layout_weight="1"
             android:id="@+id/recycler_venda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,13 +63,23 @@
             android:paddingHorizontal="10dp"
             android:layout_marginVertical="10dp"/>
 
+        <TextView
+            android:id="@+id/letreiro_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/md_white"/>
+
         <EditText
             android:id="@+id/venda_register"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:textColor="@color/md_white"
-            android:textSize="60dp"
+            android:textSize="30dp"
             android:editable="false"
+            android:maxLines="2"
             android:focusable="false"
             android:gravity="bottom|left"
             android:padding="10dp"/>

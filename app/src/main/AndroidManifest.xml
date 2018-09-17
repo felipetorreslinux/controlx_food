@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,7 @@
 
         <activity android:name=".Views.View_Venda"
             android:screenOrientation="portrait"
+            android:theme="@style/Venda"
             android:windowSoftInputMode="stateHidden"/>
 
     </application>

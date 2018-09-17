@@ -72,7 +72,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_backspace_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/toggle/ic_radio_button_checked_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -82,8 +82,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ff9300" />
-                            <entry key="outputName" value="ic_back_venda" />
+                            <entry key="color" value="05c700" />
+                            <entry key="outputName" value="ic_online" />
                             <entry key="sourceFile" value="C:\Users\FelipeTorres" />
                           </map>
                         </option>

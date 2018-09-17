@@ -4,4 +4,10 @@
     <string name="label_button_login">Entrar</string>
     <string name="title_login">Login</string>
     <string name="label_login_esqueci_senha">Esqueci minha senha</string>
+    <string name="info_labal_garcon">Garçon</string>
+    <string name="info_labal_mesa">Mesa</string>
+    <string name="info_labal_produto">Produto</string>
+    <string name="info_not_labal_garcon">Informe o código do garçon</string>
+    <string name="info_not_labal_mesa">Informe a mesa</string>
+    <string name="info__not_labal_produto">Informe o produto</string>
 </resources>

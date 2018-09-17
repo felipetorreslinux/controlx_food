@@ -18,6 +18,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Venda" parent="AppTheme" tools:ignore="NewApi">
+        <item name="android:statusBarColor">@color/md_black</item>
+    </style>
+
     <style name="ButtonMenuWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
         <item name="android:tint">@color/colorPrimary</item>
     </style>
