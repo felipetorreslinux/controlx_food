@@ -1,6 +1,7 @@
 package br.com.espe.controlxfood.Views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import br.com.espe.controlxfood.Models.Grupos;
 import br.com.espe.controlxfood.Models.Produtos;
 import br.com.espe.controlxfood.Models.VendaMesa;
 import br.com.espe.controlxfood.R;
+import br.com.espe.controlxfood.Services.Conexao;
 import br.com.espe.controlxfood.Services.GruposService;
 import br.com.espe.controlxfood.Services.ProdutosService;
 
@@ -61,6 +63,7 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
         new GruposService().adicionaGrupos(grupos);
         new ProdutosService().adicionaProdutos(produtos);
 
+        new Conexao(this);
 
         item_garcon = findViewById(R.id.item_garcon);
         item_mesa = findViewById(R.id.item_mesa);

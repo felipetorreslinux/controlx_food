@@ -4,13 +4,17 @@ public class Produtos {
     int id;
     int grupo;
     String nome;
+    String descricao;
     double preco;
+    String imagem;
 
-    public Produtos(int id, int grupo, String nome, double preco) {
+    public Produtos(int id, int grupo, String nome, String descricao, double preco, String imagem) {
         this.id = id;
         this.grupo = grupo;
         this.nome = nome;
+        this.descricao = descricao;
         this.preco = preco;
+        this.imagem = imagem;
     }
 
     public int getId() {
@@ -37,11 +41,27 @@ public class Produtos {
         this.nome = nome;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public double getPreco() {
         return preco;
     }
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
