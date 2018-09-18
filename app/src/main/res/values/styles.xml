@@ -1,15 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools"  tools:ignore="NewApi">
 
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:background">@drawable/bg_splash</item>
     </style>
 
-    <style name="Login" parent="AppTheme" tools:ignore="NewApi">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="actionOverflowButtonStyle">@style/ButtonMenuWhite</item>
+    <style name="Login" parent="AppTheme">
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="actionOverflowButtonStyle">@style/ButtonMenuLogin</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -18,12 +16,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Venda" parent="AppTheme" tools:ignore="NewApi">
+    <style name="Venda" parent="AppTheme">
         <item name="android:statusBarColor">@color/md_black</item>
     </style>
 
-    <style name="ButtonMenuWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+    <style name="ButtonMenuOrange" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
         <item name="android:tint">@color/colorPrimary</item>
+    </style>
+
+    <style name="ButtonMenuLogin" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+        <item name="android:tint">@color/md_black</item>
     </style>
 
 </resources>

@@ -23,13 +23,13 @@ public class Conexao {
         this.activity = activity;
         this.mHandler = new Handler();
         this.imageView = activity.findViewById(R.id.image_conexao);
-        mHandler.post(mUpdateUI);
+        mHandler.post(UICONEXAO);
     }
 
-    private final Runnable mUpdateUI = new Runnable() {
+    private final Runnable UICONEXAO = new Runnable() {
         public void run() {
             check ();
-            mHandler.postDelayed(mUpdateUI, 1000);
+            mHandler.postDelayed(UICONEXAO, 1000);
         }
     };
 
@@ -42,22 +42,6 @@ public class Conexao {
             imageView.setImageResource(R.drawable.ic_online);
         }else{
             imageView.setImageResource(R.drawable.ic_offline);
-        }
-    }
-
-    public String type (){
-        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-        if(isConnected){
-            boolean wifi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
-            if(wifi){
-                return "wifi";
-            }else{
-                return "dados";
-            }
-        }else{
-            return "";
         }
     }
 

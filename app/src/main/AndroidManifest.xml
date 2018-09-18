@@ -32,13 +32,17 @@
         <activity
             android:name=".Views.View_Login"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Login"/>
 
         <activity android:name=".Views.View_Venda"
             android:screenOrientation="portrait"
             android:theme="@style/Venda"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".Views.View_RecoveryPass"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
 
     </application>
 

@@ -23,6 +23,7 @@ import br.com.espe.controlxfood.R;
 import br.com.espe.controlxfood.Services.Conexao;
 import br.com.espe.controlxfood.Services.GruposService;
 import br.com.espe.controlxfood.Services.ProdutosService;
+import br.com.espe.controlxfood.Services.Vendas;
 
 public class View_Venda extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,6 +51,7 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
     ImageView number09;
 
     ImageView image_remove;
+    ImageView image_x;
     ImageView image_igual;
 
     Vibrator vibrator;
@@ -58,12 +60,11 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_venda);
+        new Conexao(this);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         new GruposService().adicionaGrupos(grupos);
         new ProdutosService().adicionaProdutos(produtos);
-
-        new Conexao(this);
 
         item_garcon = findViewById(R.id.item_garcon);
         item_mesa = findViewById(R.id.item_mesa);
@@ -94,6 +95,9 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
 
         image_remove = findViewById(R.id.image_remove);
         image_remove.setOnClickListener(this);
+
+        image_x = findViewById(R.id.image_x);
+        image_x.setOnClickListener(this);
 
         image_igual = findViewById(R.id.image_igual);
         image_igual.setOnClickListener(this);
@@ -172,6 +176,11 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
                 removeItem();
                 break;
 
+            case R.id.image_x:
+                lista_venda_register.add("x");
+                updateList();
+                break;
+
             case R.id.image_igual:
                 igualFunc();
                 break;
@@ -180,7 +189,7 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
 
     private void updateList(){
         String valor = lista_venda_register.toString().replace("[", "").replace("]", "").replace(",", "");
-        venda_register.setText(valor);
+        venda_register.setText(valor.replaceAll(" ",""));
     }
 
     private void removeItem(){
@@ -216,8 +225,11 @@ public class View_Venda extends AppCompatActivity implements View.OnClickListene
                 lista_venda_register.clear();
             }
         }else{
-            int code = Integer.parseInt(venda_register.getText().toString().trim().replace(" ", ""));
-            boolean sim = produtos.contains(code);
+            String reg = venda_register.getText().toString().trim();
+            String[] venda = venda_register.getText().toString().trim().split("x");
+            String[] g = item_garcon.getText().toString().trim().split("-");
+            String[] m = item_mesa.getText().toString().trim().split("-");
+            new Vendas(this).lancaProdutoMesa(reg, g, m);
         }
     }
 

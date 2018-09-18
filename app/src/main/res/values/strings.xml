@@ -10,4 +10,12 @@
     <string name="info_not_labal_garcon">Informe o código do garçon</string>
     <string name="info_not_labal_mesa">Informe a mesa</string>
     <string name="info__not_labal_produto">Informe o produto</string>
+    <string name="info_not_qtd_produto">Informe a quantidade</string>
+    <string name="error_code_venda">Formato incorreto</string>
+    <string name="label_menu_configuracoes">Configurações</string>
+    <string name="info_title_server_host">Servidor</string>
+    <string name="info_label_text_servidor">Defina o caminho de comunicação com o servidor ControlXFood</string>
+    <string name="label_button_server">Conectar</string>
+    <string name="info_error_label_server">Informe o endereço do servidor</string>
+    <string name="label_recovery_pass">Recuperar senha</string>
 </resources>

@@ -8,6 +8,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorFundo">#F7F7F7</color>
     <color name="colorGray">#E6E6E6</color>
+    <color name="colorGrayDark">#AAAAAA</color>
     <color name="colorPrimary_offline">#FF2929</color>
     <color name="colorPrimaryDark_offline">#E60000</color>
     <color name="colorBackground">#FFFFFF</color>

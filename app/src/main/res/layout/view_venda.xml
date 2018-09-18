@@ -70,6 +70,8 @@
             android:layout_height="wrap_content"
             android:paddingVertical="5dp"
             android:paddingHorizontal="10dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:textColor="@color/md_white"/>
 
         <EditText
@@ -171,6 +173,7 @@
                 android:clickable="true"/>
 
             <ImageView
+                android:id="@+id/image_x"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

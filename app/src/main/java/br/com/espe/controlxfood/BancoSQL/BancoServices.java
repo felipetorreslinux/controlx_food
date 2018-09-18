@@ -13,8 +13,8 @@ import br.com.espe.controlxfood.Models.Produtos;
 public class BancoServices {
 
     Activity activity;
-    public static SQLiteDatabase database;
-    public BancoCore bancoCore;
+    SQLiteDatabase database;
+    BancoCore bancoCore;
 
     public BancoServices(Activity activity){
         this.activity = activity;
