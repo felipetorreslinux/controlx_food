@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:fitsSystemWindows="true"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/title_slide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/md_white"
+            android:textSize="22dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/box_slides_intro"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_intro_slide"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/subtitle_slide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="16dp"
+            android:textSize="16dp"
+            android:textColor="@color/black_header_color"
+            android:gravity="center"/>
+
+        <com.tmall.ultraviewpager.UltraViewPager
+            android:id="@+id/ultraviewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_white"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

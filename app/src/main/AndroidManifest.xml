@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Intro"
+            android:screenOrientation="portrait"
+            android:theme="@style/Intro"/>
+
         <activity
             android:name=".Views.View_Login"
             android:screenOrientation="portrait"

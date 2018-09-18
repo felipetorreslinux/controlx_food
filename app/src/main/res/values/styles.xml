@@ -1,8 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools"  tools:ignore="NewApi">
 
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowFullscreen">true</item>
         <item name="android:background">@drawable/bg_splash</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorAccent">@color/colorWhite</item>
+    </style>
+
+    <style name="Intro" parent="AppTheme">
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Login" parent="AppTheme">
