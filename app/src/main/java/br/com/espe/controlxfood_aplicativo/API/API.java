@@ -21,7 +21,7 @@ public class API {
         this.sharedPreferences = activity.getSharedPreferences("API", Context.MODE_PRIVATE);
     }
 
-    public String URL = "";
+    public String URL = "http://192.168.15.220:200/v1";
 
     public String Server (){
         return sharedPreferences != null ? sharedPreferences.getString("maq_local", null) : null;

@@ -36,7 +36,6 @@ public class LoadingViews {
         builder.setCancelable(cancelled);
         alertDialog = builder.create();
         alertDialog.show();
-
     }
 
     public static void close(){

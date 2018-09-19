@@ -14,10 +14,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.androidnetworking.AndroidNetworking;
+
+import java.util.concurrent.TimeUnit;
+
 import br.com.espe.controlxfood_aplicativo.Models.Grupos;
 import br.com.espe.controlxfood_aplicativo.Services.GruposService;
 import br.com.espe.controlxfood_aplicativo.Services.ProdutosService;
 import br.com.espe.controlxfood_aplicativo.Views.View_Login;
+import okhttp3.OkHttpClient;
 
 public class Splash extends AppCompatActivity {
 

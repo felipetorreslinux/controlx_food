@@ -1,6 +1,7 @@
 package br.com.espe.controlxfood_aplicativo.Services;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 
 import br.com.espe.controlxfood_aplicativo.API.API;
 import br.com.espe.controlxfood_aplicativo.Utils.LoadingViews;
+import br.com.espe.controlxfood_aplicativo.Views.View_Venda;
 
 public class Service_Login {
 
@@ -23,7 +25,7 @@ public class Service_Login {
 
     public void get (String login, String password){
         LoadingViews.open(activity, "Autorizando", false);
-        AndroidNetworking.post(new API(activity).URL)
+        AndroidNetworking.post(new API(activity).URL+"/cliente/login")
         .addBodyParameter("login", login)
         .addBodyParameter("password", password)
         .setPriority(Priority.HIGH)
@@ -36,6 +38,8 @@ public class Service_Login {
                     switch (status){
                         case "success":
                             LoadingViews.close();
+                            activity.startActivity(new Intent(activity, View_Venda.class));
+                            activity.finishAffinity();
                             return;
                         default:
                             LoadingViews.close();
@@ -46,6 +50,7 @@ public class Service_Login {
             }
             @Override
             public void onError(ANError anError) {
+                LoadingViews.close();
                 new API(activity).ErrorServer(anError.getErrorCode());
             }
         });
