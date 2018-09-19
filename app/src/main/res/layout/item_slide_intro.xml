@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/image_slide_intro"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
         android:src="@drawable/logo"
         android:layout_marginBottom="16dp"/>

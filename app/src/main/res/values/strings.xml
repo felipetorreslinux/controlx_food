@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ControlX Food</string>
-    <string name="info_versao">Versão 2.0.0</string>
+    <string name="info_versao">Versão 1.0.0</string>
     <string name="label_button_login">Entrar</string>
     <string name="title_login">Login</string>
     <string name="label_login_esqueci_senha">Esqueci minha senha</string>
@@ -17,8 +17,11 @@
     <string name="info_label_text_servidor">Defina o caminho de comunicação com o servidor ControlXFood</string>
     <string name="label_button_server">Conectar</string>
     <string name="info_error_label_server">Informe o endereço do servidor</string>
-    <string name="label_recovery_pass">Recuperar senha</string>
+    <string name="label_recovery_pass">Esqueci minha senha</string>
 
 
-    <string name="slide_info_01">O ControlX Food é um Sistema de Gestão desenvolvido para o setor de alimentação e entretenimento. Com ele você será capaz de tornar seu negócio mais lucrativo, reduzindo custos e agilizando o atendimento. O ControlX Food pode ser instalado em um ou mais computadores e usar diversas automações como impressoras, coletores, smartphone’s, pin-pad’s</string>
+    <string name="slide_info_01">O ControlX Food é um Sistema de Gestão desenvolvido para o setor de alimentação e entretenimento. Com ele você será capaz de tornar seu negócio mais lucrativo, reduzindo custos e agilizando o atendimento.</string>
+    <string name="title_recovery_pass">Recuperar senha</string>
+    <string name="info_label_recovery_pass">Informe seu telefone ou seu email para recuperar sua senha</string>
+    <string name="label_button_novo_usuario">Não sou cadastrado</string>
 </resources>

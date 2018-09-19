@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente_login">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_recovery_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/info_label_recovery_pass"
+        android:textColor="@color/md_white"
+        android:textSize="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input_login"
+        android:paddingVertical="10dp"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp">
+
+        <EditText
+            android:id="@+id/text_recovery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Email ou Telefone"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_send_recovery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/ic_check"/>
 
 </LinearLayout>
