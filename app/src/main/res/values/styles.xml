@@ -32,4 +32,9 @@
         <item name="android:tint">@color/md_black</item>
     </style>
 
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

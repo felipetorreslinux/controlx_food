@@ -4,6 +4,7 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,15 +52,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.espe.controlxfood_aplicativo.R;
+import br.com.espe.controlxfood_aplicativo.Services.Service_Login;
 import br.com.espe.controlxfood_aplicativo.Utils.MaskCellPhone;
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener {
+
+    static final int REQUEST_NOVO_USUARIO = 10;
+    static final int REQUEST_RECOVERY_PASS = 20;
 
     AlertDialog alertDialog;
     Animation animation;
     CardView card_login;
     EditText login;
     EditText password;
+    Button button_login;
+    Button button_novo_usuario;
     TextView button_recovery_pass;
 
     @Override
@@ -79,6 +86,12 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         button_recovery_pass = findViewById(R.id.button_recovery_pass);
         button_recovery_pass.setOnClickListener(this);
 
+        button_login = findViewById(R.id.button_login);
+        button_login.setOnClickListener(this);
+
+        button_novo_usuario = findViewById(R.id.button_novo_usuario);
+        button_novo_usuario.setOnClickListener(this);
+
         String email = login.getText().toString().trim();
         if(email.isEmpty()){
             getEmail();
@@ -88,9 +101,30 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button_recovery_pass:
-                startActivity(new Intent(this, View_RecoveryPass.class));
+
+            case R.id.button_login:
+                AuthLogin();
                 break;
+
+            case R.id.button_recovery_pass:
+                startActivityForResult(new Intent(this, View_RecoveryPass.class), REQUEST_RECOVERY_PASS);
+                break;
+
+            case R.id.button_novo_usuario:
+                startActivityForResult(new Intent(this, View_NovoUsuario.class), REQUEST_NOVO_USUARIO);
+                break;
+        }
+    }
+
+    private void AuthLogin() {
+        String email = login.getText().toString().trim();
+        String pass = password.getText().toString().trim();
+        if(email.isEmpty()){
+
+        }else if(pass.isEmpty()){
+
+        }else {
+            new Service_Login(this).get(email, pass);
         }
     }
 
@@ -102,7 +136,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         }
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Fazer login com");
+        builder.setTitle("Entrar com");
         List<String> emails = new ArrayList<>();
         emails.clear();
         ListView listView = new ListView(this);
@@ -141,7 +175,13 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                     getPhone();
                 }
             });
-            builder.setNegativeButton("Voltar", null);
+            builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                    login.setText(null);
+                }
+            });
             alertDialog = builder.create();
             alertDialog.show();
         } catch (Exception e) {
@@ -152,7 +192,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     private void getPhone() {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Fazer login com");
+        builder.setTitle("Entrar com");
 
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
@@ -192,7 +232,12 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                     getEmail();
                 }
             });
-            builder.setNegativeButton("Voltar", null);
+            builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
             alertDialog = builder.create();
             alertDialog.show();
         }else{
@@ -216,6 +261,18 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
             });
             alertDialog = builder.create();
             alertDialog.show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode){
+            case REQUEST_NOVO_USUARIO:
+                getEmail();
+                break;
+            case REQUEST_RECOVERY_PASS:
+                getEmail();
+                break;
         }
     }
 

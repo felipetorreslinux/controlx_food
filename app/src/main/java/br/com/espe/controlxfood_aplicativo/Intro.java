@@ -1,6 +1,7 @@
 package br.com.espe.controlxfood_aplicativo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -25,6 +26,7 @@ import br.com.espe.controlxfood_aplicativo.Views.View_Login;
 
 public class Intro extends AppCompatActivity {
 
+    SharedPreferences.Editor editor;
     Animation animation;
     List<SlidesIntro> slides = new ArrayList<>();
     LinearLayout box_slides_intro;
@@ -38,6 +40,7 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_intro);
+        editor = getSharedPreferences("intro", MODE_PRIVATE).edit();
 
         animation = new TranslateAnimation(0,0,2000,0);
         animation.setFillEnabled(true);
@@ -48,6 +51,7 @@ public class Intro extends AppCompatActivity {
         title_slide = findViewById(R.id.title_slide);
         subtitle_slide = findViewById(R.id.subtitle_slide);
         button_next_slide = findViewById(R.id.button_next_slide);
+        button_next_slide.setText("Próximo");
 
         ultraviewpager = findViewById(R.id.ultraviewpager);
         mSlides();
@@ -90,18 +94,7 @@ public class Intro extends AppCompatActivity {
                     case 0:
                         title_slide.setText(intro.getTitle());
                         subtitle_slide.setText(intro.getSubtitle());
-                        button_next_slide.setText("Pular");
-                        button_next_slide.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                ultraviewpager.setCurrentItem(1);
-                            }
-                        });
-                        break;
-                    case 1:
-                        title_slide.setText(intro.getTitle());
-                        subtitle_slide.setText(intro.getSubtitle());
-                        button_next_slide.setText("Pular");
+                        button_next_slide.setText("Próximo");
                         button_next_slide.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -109,10 +102,21 @@ public class Intro extends AppCompatActivity {
                             }
                         });
                         break;
+                    case 1:
+                        title_slide.setText(intro.getTitle());
+                        subtitle_slide.setText(intro.getSubtitle());
+                        button_next_slide.setText("Próximo");
+                        button_next_slide.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ultraviewpager.setCurrentItem(3);
+                            }
+                        });
+                        break;
                     case 2:
                         title_slide.setText(intro.getTitle());
                         subtitle_slide.setText(intro.getSubtitle());
-                        button_next_slide.setText("Pular");
+                        button_next_slide.setText("Próximo");
                         button_next_slide.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -156,6 +160,8 @@ public class Intro extends AppCompatActivity {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(0,2000,0,0);
                 box_slides_intro.setLayoutParams(params);
+                editor.putInt("view_intro", 1);
+                editor.commit();
                 startActivity(new Intent(Intro.this, View_Login.class));
                 finish();
             }

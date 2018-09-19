@@ -21,6 +21,8 @@ public class API {
         this.sharedPreferences = activity.getSharedPreferences("API", Context.MODE_PRIVATE);
     }
 
+    public String URL = "";
+
     public String Server (){
         return sharedPreferences != null ? sharedPreferences.getString("maq_local", null) : null;
     }
@@ -33,6 +35,12 @@ public class API {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void ErrorServer(int code){
+        switch (code){
+
         }
     }
 }

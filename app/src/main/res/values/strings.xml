@@ -24,4 +24,5 @@
     <string name="title_recovery_pass">Recuperar senha</string>
     <string name="info_label_recovery_pass">Informe seu telefone ou seu email para recuperar sua senha</string>
     <string name="label_button_novo_usuario">Não sou cadastrado</string>
+    <string name="title_novo_usuario">Novo Usuário</string>
 </resources>
