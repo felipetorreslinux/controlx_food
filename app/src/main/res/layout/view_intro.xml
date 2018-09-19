@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorFundo"
     android:fitsSystemWindows="true"
     android:weightSum="1">
 
@@ -13,16 +13,38 @@
         android:layout_height="wrap_content"
         android:paddingVertical="20dp"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="1">
 
         <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:layout_marginHorizontal="16dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:layout_weight="1"
             android:id="@+id/title_slide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/md_white"
+            android:textColor="@color/colorAccent"
             android:textSize="22dp"/>
+
+        <TextView
+            android:id="@+id/button_next_slide"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:layout_marginHorizontal="16dp"/>
 
     </LinearLayout>
 
@@ -34,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_intro_slide"
-        android:elevation="10dp">
+        android:elevation="4dp">
 
         <TextView
             android:id="@+id/subtitle_slide"
@@ -44,7 +66,7 @@
             android:layout_marginHorizontal="50dp"
             android:layout_marginVertical="16dp"
             android:textSize="16dp"
-            android:textColor="@color/black_header_color"
+            android:textColor="@color/md_black"
             android:gravity="center"/>
 
         <com.tmall.ultraviewpager.UltraViewPager

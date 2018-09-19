@@ -11,8 +11,8 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
-        android:layout_centerInParent="true"
-        android:tint="@color/colorPrimary"/>
+        android:tint="@color/colorPrimary"
+        android:layout_centerInParent="true" />
 
     <ProgressBar
         android:layout_alignParentBottom="true"

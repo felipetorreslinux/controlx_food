@@ -72,7 +72,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_more_vert_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_vpn_key_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -82,9 +82,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ff9300" />
-                            <entry key="outputName" value="ic_hosting" />
+                            <entry key="outputName" value="ic_key" />
                             <entry key="sourceFile" value="C:\Users\FelipeTorres\Downloads\hosting.psd" />
                           </map>
                         </option>

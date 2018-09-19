@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "607755968049",
+    "firebase_url": "https://controlxfood.firebaseio.com",
+    "project_id": "controlxfood",
+    "storage_bucket": "controlxfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607755968049:android:1f933d9f1a832963",
+        "android_client_info": {
+          "package_name": "br.com.espe.controlxfood_aplicativo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607755968049-r5focma1mqdbhaaqs36t85tkh29bkj1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.espe.controlxfood_aplicativo",
+            "certificate_hash": "563fec3d32cee2eacd4fc14251c8640e71859c76"
+          }
+        },
+        {
+          "client_id": "607755968049-k9dlekvtrr5nkn5fjpms6kmd8v60h07e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL1L6TeRwh7mpcaWTm2UVsNYAprZ_1j5Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607755968049-k9dlekvtrr5nkn5fjpms6kmd8v60h07e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
