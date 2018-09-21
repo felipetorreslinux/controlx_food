@@ -66,7 +66,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     EditText login;
     EditText password;
     Button button_login;
-    Button button_novo_usuario;
+    TextView button_novo_usuario;
     TextView button_recovery_pass;
 
     @Override
@@ -111,7 +111,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.button_novo_usuario:
-                startActivityForResult(new Intent(this, View_NovoUsuario.class), REQUEST_NOVO_USUARIO);
+                startActivityForResult(new Intent(this, View_CodeSMS.class), REQUEST_NOVO_USUARIO);
                 break;
         }
     }
@@ -266,12 +266,17 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        String email = login.getText().toString().trim();
         switch (requestCode){
             case REQUEST_NOVO_USUARIO:
-                getEmail();
+                if(email.isEmpty()){
+                    getEmail();
+                }
                 break;
             case REQUEST_RECOVERY_PASS:
-                getEmail();
+                if(email.isEmpty()){
+                    getEmail();
+                }
                 break;
         }
     }

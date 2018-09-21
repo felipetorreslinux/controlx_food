@@ -23,6 +23,6 @@
     <string name="slide_info_01">O ControlX Food é um Sistema de Gestão desenvolvido para o setor de alimentação e entretenimento. Com ele você será capaz de tornar seu negócio mais lucrativo, reduzindo custos e agilizando o atendimento.</string>
     <string name="title_recovery_pass">Recuperar senha</string>
     <string name="info_label_recovery_pass">Informe seu telefone ou seu email para recuperar sua senha</string>
-    <string name="label_button_novo_usuario">Não sou cadastrado</string>
+    <string name="label_button_novo_usuario">Cadastre-se</string>
     <string name="title_novo_usuario">Novo Usuário</string>
 </resources>

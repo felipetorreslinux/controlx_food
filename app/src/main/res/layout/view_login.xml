@@ -114,20 +114,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_button_login"
-                    android:background="@drawable/ripple_button_login"
+                    android:background="@drawable/ripple_button_orange"
                     android:textColor="@color/colorWhite"
+                    android:clickable="true"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"/>
 
-                <Button
+                <TextView
                     android:id="@+id/button_novo_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_button_novo_usuario"
-                    android:background="@drawable/ripple_button_black"
-                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/ripple_buuton_gray"
+                    android:textColor="@color/black_header_color"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="5dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingVertical="16dp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="16dp"/>
 
                 <TextView

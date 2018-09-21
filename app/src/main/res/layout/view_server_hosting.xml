@@ -67,7 +67,7 @@
         android:layout_gravity="right"
         android:paddingHorizontal="24dp"
         android:textColor="@color/colorWhite"
-        android:background="@drawable/ripple_button_login"/>
+        android:background="@drawable/ripple_button_orange"/>
 
 
 </LinearLayout>
