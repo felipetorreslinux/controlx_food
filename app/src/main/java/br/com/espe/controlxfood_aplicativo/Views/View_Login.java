@@ -4,29 +4,18 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
 import android.text.InputType;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -34,25 +23,18 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.credentials.CredentialPickerConfig;
-import com.google.android.gms.auth.api.credentials.HintRequest;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.espe.controlxfood_aplicativo.R;
 import br.com.espe.controlxfood_aplicativo.Services.Service_Login;
+import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
 import br.com.espe.controlxfood_aplicativo.Utils.MaskCellPhone;
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener {
@@ -111,7 +93,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.button_novo_usuario:
-                startActivityForResult(new Intent(this, View_CodeSMS.class), REQUEST_NOVO_USUARIO);
+                startActivityForResult(new Intent(this, View_NovoUsuario.class), REQUEST_NOVO_USUARIO);
                 break;
         }
     }
@@ -120,9 +102,9 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         String email = login.getText().toString().trim();
         String pass = password.getText().toString().trim();
         if(email.isEmpty()){
-
+            Alertas.openToast(this, getString(R.string.info_not_login), R.color.md_red);
         }else if(pass.isEmpty()){
-
+            Alertas.openToast(this, getString(R.string.info_not_password), R.color.md_red);
         }else {
             new Service_Login(this).get(email, pass);
         }

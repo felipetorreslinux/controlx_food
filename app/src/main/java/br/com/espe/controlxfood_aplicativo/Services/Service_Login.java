@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.com.espe.controlxfood_aplicativo.API.API;
+import br.com.espe.controlxfood_aplicativo.R;
+import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
 import br.com.espe.controlxfood_aplicativo.Utils.LoadingViews;
 import br.com.espe.controlxfood_aplicativo.Views.View_Venda;
 
@@ -43,6 +45,7 @@ public class Service_Login {
                             return;
                         default:
                             LoadingViews.close();
+                            Alertas.openToast(activity, activity.getString(R.string.info_login_invalido), R.color.md_red);
                             return;
 
                     }
@@ -52,6 +55,7 @@ public class Service_Login {
             public void onError(ANError anError) {
                 LoadingViews.close();
                 new API(activity).ErrorServer(anError.getErrorCode());
+                Alertas.openToast(activity, anError.getMessage(), R.color.md_red);
             }
         });
     }

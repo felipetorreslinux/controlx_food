@@ -12,6 +12,7 @@
     <style name="Login" parent="AppTheme">
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="actionOverflowButtonStyle">@style/ButtonMenuLogin</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
     <style name="CodeSMS" parent="AppTheme">

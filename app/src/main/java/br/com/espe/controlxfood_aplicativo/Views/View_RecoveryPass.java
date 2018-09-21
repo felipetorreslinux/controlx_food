@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import br.com.espe.controlxfood_aplicativo.R;
+import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
 
 public class View_RecoveryPass extends AppCompatActivity implements View.OnClickListener{
 
@@ -66,7 +67,7 @@ public class View_RecoveryPass extends AppCompatActivity implements View.OnClick
     private void sendRecovery() {
         String text = text_recovery.getText().toString().trim();
         if(text.isEmpty()){
-
+            Alertas.openToast(this, getString(R.string.info_not_text_recovery_pass), R.color.md_red);
         }else{
 
         }

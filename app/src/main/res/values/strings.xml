@@ -25,4 +25,8 @@
     <string name="info_label_recovery_pass">Informe seu telefone ou seu email para recuperar sua senha</string>
     <string name="label_button_novo_usuario">Cadastre-se</string>
     <string name="title_novo_usuario">Novo Usuário</string>
+    <string name="info_not_login">Informe seu login</string>
+    <string name="info_not_password">Informe sua senha</string>
+    <string name="info_login_invalido">Login e senha inválidos</string>
+    <string name="info_not_text_recovery_pass">Informe seu email ou telefone</string>
 </resources>

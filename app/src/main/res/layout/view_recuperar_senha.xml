@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente_login">
+    android:background="@color/colorFundo">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_recovery_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="@color/colorPrimary"
         android:elevation="0dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
@@ -19,7 +20,7 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="16dp"
         android:text="@string/info_label_recovery_pass"
-        android:textColor="@color/md_white"
+        android:textColor="@color/colorGrayDark"
         android:textSize="16dp"/>
 
     <LinearLayout
