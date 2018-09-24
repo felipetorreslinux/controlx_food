@@ -39,17 +39,21 @@
             android:theme="@style/Intro"/>
 
         <activity
-            android:name=".Views.View_Login"
+            android:name=".Views.View_Intro_Control"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
-            android:theme="@style/Login"/>
+            android:theme="@style/LoginIntro"/>
+
+        <activity android:name=".Views.View_Login"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity android:name=".Views.View_Venda"
             android:screenOrientation="portrait"
             android:theme="@style/Venda"
             android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name=".Views.View_RecoveryPass"
+        <activity android:name=".Views.View_Recuperar_Senha"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/Login"/>
@@ -63,6 +67,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/CodeSMS"/>
+
 
     </application>
 

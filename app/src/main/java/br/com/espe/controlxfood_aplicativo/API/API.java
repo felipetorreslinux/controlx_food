@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import br.com.espe.controlxfood_aplicativo.R;
+import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
 
 public class API {
 
@@ -40,7 +41,9 @@ public class API {
 
     public void ErrorServer(int code){
         switch (code){
-
+            case 0:
+                Alertas.openToast(activity, "Aparelho sem conexão com a internet", R.color.md_red);
+                break;
         }
     }
 }

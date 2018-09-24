@@ -22,7 +22,7 @@ import java.util.List;
 
 import br.com.espe.controlxfood_aplicativo.Adapter.SlidesAdapter;
 import br.com.espe.controlxfood_aplicativo.Models.SlidesIntro;
-import br.com.espe.controlxfood_aplicativo.Views.View_Login;
+import br.com.espe.controlxfood_aplicativo.Views.View_Intro_Control;
 
 public class Intro extends AppCompatActivity {
 
@@ -162,7 +162,7 @@ public class Intro extends AppCompatActivity {
                 box_slides_intro.setLayoutParams(params);
                 editor.putInt("view_intro", 1);
                 editor.commit();
-                startActivity(new Intent(Intro.this, View_Login.class));
+                startActivity(new Intent(Intro.this, View_Intro_Control.class));
                 finish();
             }
             @Override

@@ -18,7 +18,6 @@ public class View_NovoUsuario extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_novo_usuario);
-        
         createToolbar(toolbar);
     }
 

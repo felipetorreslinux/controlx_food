@@ -4,21 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/server_host"
-        android:icon="@drawable/ic_hosting"
-        app:showAsAction="always"
-        tools:ignore="MenuTitle" />
-
-    <item
-        android:id="@+id/recovery_pass_login"
-        android:title="@string/label_recovery_pass"
-        app:showAsAction="never"
-        tools:ignore="MenuTitle" />
-
-    <item
-        android:id="@+id/configuracoes_login"
-        android:title="@string/label_menu_configuracoes"
-        app:showAsAction="never"
-        tools:ignore="MenuTitle" />
+        android:id="@+id/logo_login"
+        android:title=""
+        android:icon="@drawable/logo"
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="always"/>
 
 </menu>

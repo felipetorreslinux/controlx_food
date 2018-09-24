@@ -17,16 +17,15 @@ import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
 import br.com.espe.controlxfood_aplicativo.Utils.LoadingViews;
 import br.com.espe.controlxfood_aplicativo.Views.View_Venda;
 
-public class Service_Login {
+public class Service_Profile {
 
     Activity activity;
 
-    public Service_Login(Activity activity){
+    public Service_Profile(Activity activity){
         this.activity = activity;
     }
 
-    public void get (String login, String password){
-        LoadingViews.open(activity, "Autorizando", false);
+    public void GetLogin (String login, String password){
         AndroidNetworking.post(new API(activity).URL+"/cliente/login")
         .addBodyParameter("login", login)
         .addBodyParameter("password", password)
@@ -55,8 +54,37 @@ public class Service_Login {
             public void onError(ANError anError) {
                 LoadingViews.close();
                 new API(activity).ErrorServer(anError.getErrorCode());
-                Alertas.openToast(activity, anError.getMessage(), R.color.md_red);
             }
         });
+    }
+
+    public void GetPassword (String email){
+        AndroidNetworking.post(new API(activity).URL+"")
+                .addBodyParameter("email", email)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String status = response.getString("status");
+                            switch (status){
+                                case "success":
+                                    LoadingViews.close();
+                                    return;
+                                default:
+                                    LoadingViews.close();
+                                    Alertas.openToast(activity, response.getString("message"), R.color.md_red);
+                                    return;
+
+                            }
+                        }catch (JSONException e){}
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        LoadingViews.close();
+                        new API(activity).ErrorServer(anError.getErrorCode());
+                    }
+                });
     }
 }

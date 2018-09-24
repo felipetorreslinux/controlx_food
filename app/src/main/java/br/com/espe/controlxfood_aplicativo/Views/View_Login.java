@@ -1,287 +1,130 @@
 package br.com.espe.controlxfood_aplicativo.Views;
 
-import android.Manifest;
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.telephony.TelephonyManager;
-import android.text.InputType;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.espe.controlxfood_aplicativo.R;
-import br.com.espe.controlxfood_aplicativo.Services.Service_Login;
-import br.com.espe.controlxfood_aplicativo.Utils.Alertas;
-import br.com.espe.controlxfood_aplicativo.Utils.MaskCellPhone;
+import br.com.espe.controlxfood_aplicativo.Services.Service_Profile;
+import br.com.espe.controlxfood_aplicativo.Utils.Keyboard;
+import br.com.espe.controlxfood_aplicativo.Utils.LoadingViews;
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener {
 
-    static final int REQUEST_NOVO_USUARIO = 10;
-    static final int REQUEST_RECOVERY_PASS = 20;
+    Toolbar toolbar;
 
-    AlertDialog alertDialog;
-    Animation animation;
-    CardView card_login;
-    EditText login;
-    EditText password;
+    TextInputLayout layout_login;
+    TextInputLayout layout_senha;
+
+    EditText edit_text_login;
+    EditText edit_text_senha;
+
     Button button_login;
-    TextView button_novo_usuario;
-    TextView button_recovery_pass;
+    TextView button_recovery_pass_login;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
+        createToolbar(toolbar);
 
-        animation = new TranslateAnimation(0, 0, 2000, 0);
-        animation.setDuration(1000);
-        animation.setFillEnabled(true);
-        card_login = findViewById(R.id.card_login);
-        card_login.startAnimation(animation);
+        layout_login = findViewById(R.id.layout_login);
+        layout_senha = findViewById(R.id.layout_senha);
 
-        login = findViewById(R.id.login);
-        password = findViewById(R.id.password);
-
-        button_recovery_pass = findViewById(R.id.button_recovery_pass);
-        button_recovery_pass.setOnClickListener(this);
+        edit_text_login = findViewById(R.id.edit_text_login);
+        edit_text_senha = findViewById(R.id.edit_text_senha);
 
         button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(this);
+        button_recovery_pass_login = findViewById(R.id.button_recovery_pass_login);
+        button_recovery_pass_login.setOnClickListener(this);
 
-        button_novo_usuario = findViewById(R.id.button_novo_usuario);
-        button_novo_usuario.setOnClickListener(this);
+    }
 
-        String email = login.getText().toString().trim();
-        if(email.isEmpty()){
-            getEmail();
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = findViewById(R.id.toolbar_login);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_login);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        for(int i = 0; i < menu.size(); i++){
+            Drawable drawable = menu.getItem(i).getIcon();
+            if(drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+            }
         }
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
             case R.id.button_login:
-                AuthLogin();
+                validaLogin();
                 break;
 
-            case R.id.button_recovery_pass:
-                startActivityForResult(new Intent(this, View_RecoveryPass.class), REQUEST_RECOVERY_PASS);
-                break;
-
-            case R.id.button_novo_usuario:
-                startActivityForResult(new Intent(this, View_NovoUsuario.class), REQUEST_NOVO_USUARIO);
+            case R.id.button_recovery_pass_login:
+                startActivity(new Intent(this, View_Recuperar_Senha.class));
+                finish();
                 break;
         }
     }
 
-    private void AuthLogin() {
-        String email = login.getText().toString().trim();
-        String pass = password.getText().toString().trim();
-        if(email.isEmpty()){
-            Alertas.openToast(this, getString(R.string.info_not_login), R.color.md_red);
-        }else if(pass.isEmpty()){
-            Alertas.openToast(this, getString(R.string.info_not_password), R.color.md_red);
-        }else {
-            new Service_Login(this).get(email, pass);
-        }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
-    private void getEmail() {
+    private void validaLogin(){
+        String login = edit_text_login.getText().toString().trim();
+        String senha = edit_text_senha.getText().toString().trim();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.GET_ACCOUNTS}, 2);
-            return;
-        }
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Entrar com");
-        List<String> emails = new ArrayList<>();
-        emails.clear();
-        ListView listView = new ListView(this);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(10, 10, 10, 10);
-        listView.setLayoutParams(layoutParams);
-        try {
-            AccountManager accountManager = (AccountManager) getSystemService(ACCOUNT_SERVICE);
-            Account[] itens = accountManager.getAccounts();
-            if (itens.length > 0) {
-                for (Account account : itens) {
-                    if (account.type.equals("com.google")) {
-                        emails.add(account.name);
-                    }
-                }
-            } else {
-                alertDialog.dismiss();
-            }
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, emails);
-            listView.setAdapter(arrayAdapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    alertDialog.dismiss();
-                    String email = parent.getItemAtPosition(position).toString();
-                    login.setText(email);
-                    password.requestFocus(1);
-                }
-            });
-
-            builder.setView(listView);
-            builder.setPositiveButton("telefone", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                    getPhone();
-                }
-            });
-            builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                    login.setText(null);
-                }
-            });
-            alertDialog = builder.create();
-            alertDialog.show();
-        } catch (Exception e) {
-        }
-    }
-
-    @SuppressLint("RestrictedApi")
-    private void getPhone() {
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Entrar com");
-
-        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                    Manifest.permission.READ_SMS,
-                    Manifest.permission.READ_PHONE_STATE
-                    }, 1);
-            return;
-        }
-
-        if(!telephonyManager.getLine1Number().isEmpty()){
-            String number = telephonyManager.getLine1Number().substring(3);
-            List<String> phone = new ArrayList<>();
-            ListView listView = new ListView(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(10, 10, 10, 10);
-            listView.setLayoutParams(layoutParams);
-            phone.clear();
-            phone.add(number);
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, phone);
-            listView.setAdapter(arrayAdapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    alertDialog.dismiss();
-                    String phone = parent.getItemAtPosition(position).toString();
-                }
-            });
-
-            builder.setView(listView);
-            builder.setPositiveButton("Email", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                    getEmail();
-                }
-            });
-            builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                }
-            });
-            alertDialog = builder.create();
-            alertDialog.show();
+        if(login.isEmpty()){
+            layout_login.setErrorEnabled(true);
+            layout_senha.setErrorEnabled(false);
+            layout_login.setError("Informe seu login");
+            edit_text_login.requestFocus();
+        }else if(senha.isEmpty()){
+            layout_login.setErrorEnabled(false);
+            layout_senha.setErrorEnabled(true);
+            layout_senha.setError("Informe sua senha");
+            edit_text_senha.requestFocus();
         }else{
-            builder.setMessage("Informe seu telefone");
-            final EditText editText = new EditText(this);
-            editText.setHint("(11)12345-1231");
-            editText.addTextChangedListener(MaskCellPhone.insert(editText));
-            editText.setSingleLine();
-            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-            FrameLayout container = new FrameLayout(this);
-            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            container.setLayoutParams(layoutParams);
-            container.addView(editText);
-            builder.setView(container, 26, 0, 26, 0);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                    String phone = editText.getText().toString().trim();
-                }
-            });
-            alertDialog = builder.create();
-            alertDialog.show();
+            layout_login.setErrorEnabled(false);
+            layout_senha.setErrorEnabled(false);
+            LoadingViews.open(this, false);
+            new Service_Profile(this).GetLogin(login, senha);
+            Keyboard.close(this, getWindow().getDecorView());
         }
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        String email = login.getText().toString().trim();
-        switch (requestCode){
-            case REQUEST_NOVO_USUARIO:
-                if(email.isEmpty()){
-                    getEmail();
-                }
-                break;
-            case REQUEST_RECOVERY_PASS:
-                if(email.isEmpty()){
-                    getEmail();
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case 1:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{
-                                    Manifest.permission.READ_SMS,
-                                    Manifest.permission.READ_PHONE_STATE
-                            }, 1);
-                    return;
-                }
-                return;
-            case 2:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.GET_ACCOUNTS}, 2);
-                    return;
-                }
-                return;
-        }
     }
 }
